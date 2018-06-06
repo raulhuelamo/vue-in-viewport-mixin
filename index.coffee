@@ -30,17 +30,17 @@ module.exports =
 			default: null
 
 	# Bindings that are used by the host component
-	data: -> inViewport:
-
-		# Public props
+	data: ->
 		scrollMonitor: null # scrollMonitor
-		now: null   # Is in viewport
-		fully: null # Is fully in viewport
-		above: null # Is partially or fully above the viewport
-		below: null # Is partially or fully below the viewport
+		inViewport:
+			# Public props
+			now: null   # Is in viewport
+			fully: null # Is fully in viewport
+			above: null # Is partially or fully above the viewport
+			below: null # Is partially or fully below the viewport
 
-		# Internal props
-		listening: false
+			# Internal props
+			listening: false
 
 	# Use general offset if none are defined
 	computed:
