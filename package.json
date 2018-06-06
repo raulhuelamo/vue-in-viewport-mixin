@@ -1,6 +1,6 @@
 {
   "name": "vue-in-viewport-mixin",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Vue 2 mixin to determine when a DOM element is visible in the client window",
   "main": "index.js",
   "scripts": {
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/BKWLD/vue-in-viewport-mixin.git"
+    "url": "https://github.com/raulhuelamo/vue-in-viewport-mixin.git"
   },
   "author": "info@bukwild.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/BKWLD/vue-in-viewport-mixin/issues"
+    "url": "https://github.com/raulhuelamo/vue-in-viewport-mixin/issues"
   },
-  "homepage": "https://github.com/BKWLD/vue-in-viewport-mixin#readme",
+  "homepage": "https://github.com/raulhuelamo/vue-in-viewport-mixin#readme",
   "dependencies": {
     "scrollmonitor": "^1.1.3"
   },

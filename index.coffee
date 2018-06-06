@@ -33,6 +33,7 @@ module.exports =
 	data: -> inViewport:
 
 		# Public props
+		scrollMonitor: null # scrollMonitor
 		now: null   # Is in viewport
 		fully: null # Is fully in viewport
 		above: null # Is partially or fully above the viewport
@@ -84,10 +85,11 @@ module.exports =
 			@inViewport.listening = true
 
 			# Create scrollMonitor instance which starts watching scroll
-			@scrollMonitor = scrollMonitor.create @$el, @inViewportOffsetComputed
+			@scrollMonitor = scrollMonitor
+			@scrollMonitorWatcher = scrollMonitor.create @$el, @inViewportOffsetComputed
 
 			# Start listening for changes
-			@scrollMonitor.on 'stateChange', @updateInViewport
+			@scrollMonitorWatcher.on 'stateChange', @updateInViewport
 
 			# Update intiial state, which also handles `once` prop
 			@updateInViewport()
@@ -100,17 +102,17 @@ module.exports =
 			@inViewport.listening = false
 
 			# Destroy instance, which also removes listeners
-			@scrollMonitor.destroy() if @scrollMonitor
-			delete @scrollMonitor
+			@scrollMonitorWatcher.destroy() if @scrollMonitorWatcher
+			delete @scrollMonitorWatcher
 
 		# Handle state changes from scrollMonitor
 		updateInViewport: ->
 
 			# Update state values
-			@inViewport.now   = @scrollMonitor.isInViewport
-			@inViewport.fully = @scrollMonitor.isFullyInViewport
-			@inViewport.above = @scrollMonitor.isAboveViewport
-			@inViewport.below = @scrollMonitor.isBelowViewport
+			@inViewport.now   = @scrollMonitorWatcher.isInViewport
+			@inViewport.fully = @scrollMonitorWatcher.isFullyInViewport
+			@inViewport.above = @scrollMonitorWatcher.isAboveViewport
+			@inViewport.below = @scrollMonitorWatcher.isBelowViewport
 
 			# If set to update "once", remove listeners if in viewport
 			@removeInViewportHandlers() if @inViewportOnce and @inViewport.now
