@@ -83,8 +83,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  data: function() {
 	    return {
+	      scrollMonitor: null,
 	      inViewport: {
-	        scrollMonitor: null,
 	        now: null,
 	        fully: null,
 	        above: null,
